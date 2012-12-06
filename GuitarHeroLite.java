@@ -1,3 +1,4 @@
+
 class GuitarHeroLite {
 	public static void main(String[] args) {
 

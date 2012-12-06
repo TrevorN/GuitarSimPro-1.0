@@ -10,7 +10,7 @@ public class RingBuffer
 	{
 		buffy = new double[capactity];
 		size = capactity;
-		first = capacity - 1;
+		first = capactity - 1;
 		last = 0;
 	}
 

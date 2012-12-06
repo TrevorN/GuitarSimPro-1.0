@@ -1,16 +1,16 @@
 import java.util.Random;
 public class GuitarString{
-	RingQueue myQueue;
+	RingBuffer myBuffer;
 	Random myRandom = new Random();
 	int time = 0;
 	int length;
-	final float decay = .994;
+	final float decay = (float) 0.994;
 	GuitarString(double freq){
-		length = freq/44100;
-		myQueue = new RingQueue(length);
+		length = (int) (freq/44100.0);
+		myBuffer = new RingBuffer(length);
 		
 		for(int i = 0; i < length; i++){
-			myQueue.enqueue(0);
+			myBuffer.enqueue(0);
 		}
 
 	}
@@ -19,7 +19,7 @@ public class GuitarString{
 
 		for(int i = 0; i < length; i++){
 
-			myQueue.enqueue(myRandom.nextFloat()-.5);
+			myBuffer.enqueue(myRandom.nextFloat()-.5);
 
 		}
 
@@ -27,14 +27,16 @@ public class GuitarString{
 
 	void tic(){
 
-		myQueue.enqueue(decay*(myQueue.dequque()+myQueue.peek())/2);
+		double a = myBuffer.dequeue();
+		double b = myBuffer.peek();
+		myBuffer.enqueue(decay*(a+b)/2);
 		time++;
 
 	}
 
 	double sample(){
 
-		return myQueue.peek();
+		return myBuffer.peek();
 
 	}
 

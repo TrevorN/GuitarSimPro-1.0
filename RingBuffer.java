@@ -17,14 +17,14 @@ public class RingBuffer
 	public void enqueue(double x)
 	{
 		buffy[last] = x;
-		last = last++ % size;
+		last = (last + 1) % size;
 	}
 
 	public double dequeue()
 	{
 		double ret = buffy[first];
 		buffy[first] = 0;
-		first = first++ % size;
+		first = (first + 1) % size;
 		return ret;
 	}
 

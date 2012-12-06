@@ -6,7 +6,7 @@ public class GuitarString{
 	int length;
 	final float decay = (float) 0.994;
 	GuitarString(double freq){
-		length = (int) (freq/44100.0);
+		length = (int) (44100.0/freq);
 		myBuffer = new RingBuffer(length);
 		
 		for(int i = 0; i < length; i++){

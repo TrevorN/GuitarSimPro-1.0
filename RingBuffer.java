@@ -14,26 +14,22 @@ public class RingBuffer
 		last = 0;
 	}
 
-	boolean isEmpty()
-	{
-		if(first + 1 % size = last)
-		{
-			return true;
-		}
-
-		return false;
-	}
-
-	void enqueue(double x)
+	public void enqueue(double x)
 	{
 		buffy[last] = x;
 		last = last++ % size;
 	}
 
-	void dequeue()
+	public double dequeue()
 	{
 		double ret = buffy[first];
 		buffy[first] = 0;
 		first = first++ % size;
 		return ret;
 	}
+
+	public double peek()
+	{
+		return buffy[first];
+	}
+}

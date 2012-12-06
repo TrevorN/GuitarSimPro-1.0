@@ -4,7 +4,7 @@ public class GuitarString{
 	Random myRandom = new Random();
 	int time = 0;
 	int length;
-	final float decay = (float) 0.994;
+	final double decay = (double) 0.994;
 	GuitarString(double freq){
 		length = (int) (44100.0/freq);
 		myBuffer = new RingBuffer(length);
@@ -29,7 +29,7 @@ public class GuitarString{
 
 		double a = myBuffer.dequeue();
 		double b = myBuffer.peek();
-		myBuffer.enqueue(decay*(a+b)/2);
+		myBuffer.enqueue(decay*(a+b)/2.0);
 		time++;
 
 	}

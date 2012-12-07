@@ -29,7 +29,7 @@ public class GuitarString{
 
 		double a = myBuffer.dequeue();
 		double b = myBuffer.peek();
-		myBuffer.enqueue(decay*(a+b)/2.0);
+		myBuffer.enqueue((decay*0.5)*(a+b));
 		time++;
 
 	}

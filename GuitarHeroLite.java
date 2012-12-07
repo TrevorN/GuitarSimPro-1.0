@@ -4,9 +4,13 @@ class GuitarHeroLite {
 
 		// create two guitar strings, for concert A and C
 		double CONCERT_A = 440.0;
-		double CONCERT_C = CONCERT_A * Math.pow(1.05956, 3.0);  
-		GuitarString stringA = new GuitarString(CONCERT_A);
-		GuitarString stringC = new GuitarString(CONCERT_C);
+		double CONCERT_C = CONCERT_A * Math.pow(1.05956, 3.0);
+		GuitarString[] strings = new GuitarString[37];
+		String keys = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
+
+		for(int i = 0; i < 37; i++)
+		{
+			double thing = (880 - 110)/37;
 
 		while (true) {
 

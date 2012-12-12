@@ -32,4 +32,9 @@ public class RingBuffer
 	{
 		return buffy[first];
 	}
+
+	public double[] toArray()
+	{
+		return buffy;
+	}
 }

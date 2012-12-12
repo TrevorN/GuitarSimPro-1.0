@@ -237,8 +237,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     public static void setXscale(double min, double max) {
         double size = max - min;
         synchronized (mouseLock) {
-            xmin = min - BORDER * size;
-            xmax = max + BORDER * size;
+            xmin = min;
+            xmax = max;
         }
     }
 
@@ -250,8 +250,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     public static void setYscale(double min, double max) {
         double size = max - min;
         synchronized (mouseLock) {
-            ymin = min - BORDER * size;
-            ymax = max + BORDER * size;
+            ymin = min;
+            ymax = max;
         }
     }
 
@@ -593,6 +593,16 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         draw();
     }
 
+    public static void polyline(double[] x, double[] y) {
+        int N = x.length;
+        GeneralPath path = new GeneralPath();
+        path.moveTo((float) scaleX(x[0]), (float) scaleY(y[0]));
+        for (int i = 0; i < N; i++)
+            path.lineTo((float) scaleX(x[i]), (float) scaleY(y[i]));
+        offscreen.draw(path);
+        draw();
+    }
+
     /**
      * Draw a filled polygon with the given (x[i], y[i]) coordinates.
      * @param x an array of all the x-coordindates of the polygon
@@ -845,6 +855,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     public static void show() {
         defer = false;
         draw();
+    }
+
+    public static void hide(){
+	    defer = true;
     }
 
     // draw onscreen if defer is false

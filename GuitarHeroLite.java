@@ -14,8 +14,8 @@ class GuitarHeroLite {
 
 		for(int i = 0; i < 37; i++)
 		{
-			double thing = (880.0 - 110.0) / 36.0;
-			strings[i] = new GuitarString((int) 110 + (thing * i));
+			double thing = 440*Math.pow(1.05956,i-24);
+			strings[i] = new GuitarString((int) thing);
 		}
 
 		Drawer draw = new Drawer(buffy, visWidth);
